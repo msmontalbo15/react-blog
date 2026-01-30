@@ -17,9 +17,9 @@ export function RegisterPage(): JSX.Element {
     setError(null)
 
     const { data, error } = await supabase.auth.signUp({
-      email,
-      password
-    })
+    email,
+    password
+  })
 
     if (error) {
       setError(error.message)
@@ -35,11 +35,16 @@ export function RegisterPage(): JSX.Element {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <form 
-        onSubmit={handleRegister}
-        className="bg-white p-6 w-96 space-y-4"
-      >
+    <div className="min-h-screen flex items-center justify-center">
+        <form onSubmit={handleRegister}
+        className="
+  bg-white/10 
+  backdrop-blur-lg 
+  border border-white/20 
+  rounded-xl 
+  p-8 
+  shadow-xl
+">
         <h1 className="text-2xl font-bold">Register</h1>
 
         {error && <p className="text-red-600">{error}</p>}
@@ -80,3 +85,4 @@ export function RegisterPage(): JSX.Element {
     </div>
   )
 }
+console.log(import.meta.env.VITE_SUPABASE_URL)
